@@ -1,4 +1,4 @@
-export function MoviesIndex({movies}) {
+export function MoviesIndex({movies, onShow}) {
   return (
     <div>
       <h1>All movies ({movies.length} total)</h1>
@@ -8,6 +8,7 @@ export function MoviesIndex({movies}) {
           <p>Title: {movie.title}</p>
           <p>Year: {movie.year}</p>
           <p>Plot: {movie.plot}</p>
+          <button onClick={() => onShow(movie)}>More info</button>
           </div>
       ))}
     </div>
