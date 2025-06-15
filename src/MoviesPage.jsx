@@ -1,9 +1,9 @@
-import { MoviesIndex } from "./MoviesIndex";
 import axios from "axios";
 import {useState, useEffect} from "react";
+import { MoviesIndex } from "./MoviesIndex";
 import { MoviesNew } from "./MoviesNew";
-import { Modal } from "./Modal";
 import { MoviesShow } from "./MoviesShow";
+import { Modal } from "./Modal";
 
 export function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -24,6 +24,10 @@ export function MoviesPage() {
       successCallback();
     });
   }
+
+  const handleDestroy = (movie) => {
+    console.log("handleDestroy", movie);
+  };
 
   const handleShow = (movie) => {
     console.log("handleShow", movie);
@@ -48,7 +52,7 @@ export function MoviesPage() {
       <MoviesNew onCreate={handleCreate} />
       <MoviesIndex movies={movies} onShow={handleShow} />
       <Modal show={isMoviesShowVisible} onClose={() => setIsMoviesShowVisible(false)}>
-      <MoviesShow movie={currentMovie} onUpdate={handleUpdate} />
+      <MoviesShow movie={currentMovie} onUpdate={handleUpdate} onDestroy={handleDestroy} />
       </Modal>
     </main>
   )
