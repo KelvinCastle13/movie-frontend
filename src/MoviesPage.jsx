@@ -7,7 +7,7 @@ import { Modal } from "./Modal";
 
 export function MoviesPage() {
   const [movies, setMovies] = useState([]);
-  const [isMoviesShowVisible, setIsMovieShowVisible] = useState(false);
+  const [isMoviesShowVisible, setIsMoviesShowVisible] = useState(false);
   const [currentMovie, setCurrentMovie] = useState({});
 
   const handleIndex = () => {
@@ -55,5 +55,5 @@ export function MoviesPage() {
       <MoviesShow movie={currentMovie} onUpdate={handleUpdate} onDestroy={handleDestroy} />
       </Modal>
     </main>
-  )
+  );
 }
