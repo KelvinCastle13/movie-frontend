@@ -4,6 +4,8 @@ export function MoviesNew({onCreate}) {
     event.preventDefault();
     const form = event.target;
     const params = new FormData(form);
+    console.log("params", params);
+    console.log("form!", form);
     const successCallback = () => form.reset();
     onCreate(params, successCallback);
   }

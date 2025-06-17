@@ -12,14 +12,15 @@ export function MoviesPage() {
 
   const handleIndex = () => {
     console.log("handleIndex");
-    axios.get("./movies.json").then((response) => {
+    axios.get("http://localhost:3000/movies.json").then((response) => {
       console.log(response.data);
+      setMovies(response.data);
     });
   };
 
   const handleCreate = (params, successCallback) => {
     console.log("handleCreate");
-    axios.post("/movies.json", params).then((response) => {
+    axios.post("http://localhost:3000/movies.json", params).then((response) => {
       setMovies([...movies, response.data]);
       successCallback();
     });
@@ -37,7 +38,7 @@ export function MoviesPage() {
 
   const handleUpdate = (movie, params, successCallback) => {
     console.log("handleUpdate!");
-    axios.patch(`/movies/${movie.id}.json`, params).then((response) => {
+    axios.patch(`http://localhost:3000/movies/${movie.id}.json`, params).then((response) => {
       setMovies(movie.map(m => m.id === response.data.id ? response.data : m));
       successCallback();
       setIsMoviesShowVisible(false);
